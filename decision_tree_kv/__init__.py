@@ -5,7 +5,7 @@ from PIL import Image, ImageDraw
 STD_LIST_ITEM = NewType('STD_LIST_ITEM', List[Union[str, int, float]])
 STD_LIST = NewType('STD_LIST', List[STD_LIST_ITEM])
 
-VERSION = '0.0.1'
+VERSION = '0.0.2'
 
 #
 # base
@@ -172,9 +172,9 @@ def printtree(tree: decisionnode, indent: str = '') -> None:
     else:
         # print contion
         if isinstance(tree.value, int) or isinstance(tree.value, float):
-            print('row['+str(tree.col)+']: >= "'+str(tree.value)+'"? ')
+            print('column['+str(tree.col)+']: >= "'+str(tree.value)+'"? ')
         else:
-            print('row['+str(tree.col)+']: == "'+str(tree.value)+'"? ')
+            print('column['+str(tree.col)+']: == "'+str(tree.value)+'"? ')
         # print branches
         print(indent+'True -> ', end='')
         printtree(tree.tb, indent+' ')
@@ -191,11 +191,11 @@ def tree_to_str(tree: decisionnode, indent: str = '') -> str:
         main_string += "\n"
     else:
         if isinstance(tree.value, int) or isinstance(tree.value, float):
-            s: str = 'row['+str(tree.col)+']: >= "'+str(tree.value)+'"? '
+            s: str = 'column['+str(tree.col)+']: >= "'+str(tree.value)+'"? '
             main_string += s
             main_string += "\n"
         else:
-            s: str = 'row['+str(tree.col)+']: == "'+str(tree.value)+'"? '
+            s: str = 'column['+str(tree.col)+']: == "'+str(tree.value)+'"? '
             main_string += s
             main_string += "\n"
         main_string += indent+'True -> '
